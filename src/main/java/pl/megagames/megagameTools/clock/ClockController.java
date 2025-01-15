@@ -26,7 +26,7 @@ class ClockController {
         if(clock.isPresent()) {
             return new ResponseEntity<>(new ClockDTO(clock.get()), HttpStatus.OK);
         }
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     @PutMapping("clock/save")
@@ -36,7 +36,7 @@ class ClockController {
             clockRepository.save(clock);
             return new ResponseEntity<>(clock ,HttpStatus.OK);
         } else {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 
@@ -54,6 +54,6 @@ class ClockController {
                 return new ResponseEntity<>(HttpStatus.PRECONDITION_REQUIRED);
             }
         }
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 }
